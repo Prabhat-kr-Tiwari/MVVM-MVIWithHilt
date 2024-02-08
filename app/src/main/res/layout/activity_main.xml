@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity"
     android:id="@+id/fragment_main_container"
+    android:name="com.example.mvvmormviwithhilt.ui.MainNavHostFragment"
+    app:defaultNavHost="true"
+    app:navGraph="@navigation/nav_main"
     >
 
   <!--  <ProgressBar

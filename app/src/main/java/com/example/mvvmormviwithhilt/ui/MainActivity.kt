@@ -24,21 +24,30 @@ class MainActivity : AppCompatActivity() {
     private lateinit var text: TextView
     private lateinit var progressBar: ProgressBar*/
     lateinit var binding: ActivityMainBinding
-    @Inject
-     lateinit var fragmentFactory: MainFragmentFactory
+  /*  @Inject
+     lateinit var fragmentFactory: MainFragmentFactory*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportFragmentManager.fragmentFactory=fragmentFactory
+
+
+      /*  supportFragmentManager.fragmentFactory=fragmentFactory
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_main_container,MainFragment::class.java,null)
-            .commit()
+            .commit()*/
        /* text = binding.text
         progressBar=binding.progressBar*/
 
         /*subscribeObserver()
         viewModel.setStateEvent(MainStateEvent.GetBlogEvents)*/
+
+
+
+
+
+
+
     }
 
 
