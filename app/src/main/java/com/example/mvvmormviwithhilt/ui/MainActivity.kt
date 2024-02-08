@@ -8,33 +8,41 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
+import com.example.mvvmormviwithhilt.R
 import com.example.mvvmormviwithhilt.databinding.ActivityMainBinding
 import com.example.mvvmormviwithhilt.model.Blog
 import com.example.mvvmormviwithhilt.util.DataState
 import dagger.hilt.android.AndroidEntryPoint
 import java.lang.StringBuilder
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val TAG = "AppDebug"
-    private val viewModel: MainViewModel by viewModels()
+  /*  private val viewModel: MainViewModel by viewModels()
     private lateinit var text: TextView
-    private lateinit var progressBar: ProgressBar
+    private lateinit var progressBar: ProgressBar*/
     lateinit var binding: ActivityMainBinding
+    @Inject
+     lateinit var fragmentFactory: MainFragmentFactory
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        text = binding.text
-        progressBar=binding.progressBar
+        supportFragmentManager.fragmentFactory=fragmentFactory
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_main_container,MainFragment::class.java,null)
+            .commit()
+       /* text = binding.text
+        progressBar=binding.progressBar*/
 
-        subscribeObserver()
-        viewModel.setStateEvent(MainStateEvent.GetBlogEvents)
+        /*subscribeObserver()
+        viewModel.setStateEvent(MainStateEvent.GetBlogEvents)*/
     }
 
 
-    private fun subscribeObserver() {
+/*    private fun subscribeObserver() {
 
         viewModel.dataState.observe(this, Observer { dataState ->
             when (dataState) {
@@ -86,5 +94,5 @@ class MainActivity : AppCompatActivity() {
         }
         text.text=sb.toString()
 
-    }
+    }*/
 }
